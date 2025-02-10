@@ -20,6 +20,10 @@ curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sou
 apt-get update
 ACCEPT_EULA=Y apt-get install -y msodbcsql17
 
+# Verify ODBC installation
+echo "Verifying ODBC Installation..."
+odbcinst -q -d
+
 # Ensure pip is installed and up-to-date
 python3 -m ensurepip
 pip install --upgrade pip
