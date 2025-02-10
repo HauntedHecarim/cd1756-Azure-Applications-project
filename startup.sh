@@ -24,8 +24,11 @@ ACCEPT_EULA=Y apt-get install -y msodbcsql17
 python3 -m ensurepip
 pip install --upgrade pip
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install pyodbc separately before the rest
+pip install --no-cache-dir --force-reinstall pyodbc==4.0.35
+
+# Install remaining Python dependencies
+pip install --no-cache-dir -r requirements.txt
 
 # Start the application
 gunicorn --bind 0.0.0.0:8000 FlaskWebProject:app
